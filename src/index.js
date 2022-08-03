@@ -1,7 +1,8 @@
 import "./style.css"
+import getWeather from "./modules/getWeather"
 
 main()
 
 function main() {
-  console.log("working ...")
+  getWeather("Maputo").then((weather) => console.log(weather))
 }

@@ -116,7 +116,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n\n\nmain()\n\nfunction main() {\n  console.log(\"working ...\")\n}\n\n\n//# sourceURL=webpack://weather/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_getWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/getWeather */ \"./src/modules/getWeather.js\");\n\n\n\nmain()\n\nfunction main() {\n  ;(0,_modules_getWeather__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\"Maputo\").then((weather) => console.log(weather))\n}\n\n\n//# sourceURL=webpack://weather/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/getWeather.js":
+/*!***********************************!*\
+  !*** ./src/modules/getWeather.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst API_ID = \"92cdf60f97f8454a811ed6fce5d00d96\"\n\nasync function getWeather(city) {\n  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_ID}&units=metric`\n  const response = await fetch(url, { mode: \"cors\" })\n  const data = response.json()\n  return data\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getWeather);\n\n\n//# sourceURL=webpack://weather/./src/modules/getWeather.js?");
 
 /***/ })
 
