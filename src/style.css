@@ -1,7 +1,57 @@
+@import url("https://fonts.googleapis.com/css2?family=Dosis:wght@200;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400&display=swap");
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+body {
+  min-height: 100.2vh; /* to disable jarring effect when height grows*/
+  padding: 1rem 0.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.header {
+  text-align: center;
+}
+
+.weather-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  column-gap: 0.5rem;
+}
+
+.city-input {
+  padding: 0.7em 1em;
+  border: none;
+  border-bottom: 2px solid black;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.city-input:focus,
+.city-input:valid {
+  border-bottom-color: green;
+}
+
+.search-button {
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0.4em;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-size: 1.2rem;
+  color: white;
+}
+
+.search-button:hover {
+  background-color: rgba(0, 0, 0, 0.4);
 }

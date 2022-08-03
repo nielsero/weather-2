@@ -5,24 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <script src="main.js" defer></script>
   </head>
   <body>
-    <header>
-      <h1>TheWeather</h1>
+    <header class="header">
+      <h1 class="header__title">🔅Weather</h1>
     </header>
     <form class="weather-form">
-      <label class="city-input-label weather-form__city-input-label"
-        >City:
-      </label>
       <input
-        class="city-input weather-form__city-input"
+        class="city-input"
         id="city-input"
         type="text"
         placeholder="Enter city name ..."
         required
       />
-      <button class="weather-form__submit-button">Submit</button>
+      <button class="search-button" type="submit">
+        <i class="search-icon bx bx-search"></i>
+      </button>
     </form>
   </body>
 </html>

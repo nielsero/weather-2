@@ -8,6 +8,7 @@ function bindEventListeners() {
 }
 
 function handleWeatherFormSubmit(event) {
+  console.log("[handleWeatherFormSubmit]")
   event.preventDefault()
   const cityInput = event.target.querySelector(".city-input")
   const city = cityInput.value
