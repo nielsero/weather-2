@@ -116,7 +116,17 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_getWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/getWeather */ \"./src/modules/getWeather.js\");\n\n\n\nmain()\n\nasync function main() {\n  try {\n    const weather = await (0,_modules_getWeather__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\"maputo\")\n    console.log(\"[main] loading weather data\")\n    console.log(weather)\n  } catch (error) {\n    console.log(`[main] error: ${error.message}`)\n  }\n}\n\n\n//# sourceURL=webpack://weather/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_getWeather__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/getWeather */ \"./src/modules/getWeather.js\");\n/* harmony import */ var _modules_bindEventListeners__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/bindEventListeners */ \"./src/modules/bindEventListeners.js\");\n\n\n\n\nmain()\n\nasync function main() {\n  console.log(\"[main]\")\n  try {\n    const weather = await (0,_modules_getWeather__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(\"maputo\")\n    console.log(weather)\n  } catch (error) {\n    console.log(`[main] error: ${error.message}`)\n  }\n  (0,_modules_bindEventListeners__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n}\n\n\n//# sourceURL=webpack://weather/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/bindEventListeners.js":
+/*!*******************************************!*\
+  !*** ./src/modules/bindEventListeners.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction bindEventListeners() {\n  console.log(\"[bindEventListeners]\")\n  const weatherForm = document.querySelector(\".weather-form\")\n\n  weatherForm.addEventListener(\"submit\", handleWeatherFormSubmit)\n}\n\nfunction handleWeatherFormSubmit(event) {\n  event.preventDefault()\n  const cityInput = event.target.querySelector(\".city-input\")\n  const city = cityInput.value\n  console.log(city)\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (bindEventListeners);\n\n\n//# sourceURL=webpack://weather/./src/modules/bindEventListeners.js?");
 
 /***/ }),
 
@@ -126,7 +136,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst API_ID = \"92cdf60f97f8454a811ed6fce5d00d96\"\n\nasync function getWeather(city) {\n  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_ID}&units=metric`\n  const response = await fetch(url, { mode: \"cors\" })\n  if (!response.ok) throw new Error(\"city not found\")\n  return response.json()\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getWeather);\n\n\n//# sourceURL=webpack://weather/./src/modules/getWeather.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst API_ID = \"92cdf60f97f8454a811ed6fce5d00d96\"\n\nasync function getWeather(city) {\n  console.log(\"[getWeather]\")\n  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${API_ID}&units=metric`\n  const response = await fetch(url, { mode: \"cors\" })\n  if (!response.ok) throw new Error(\"city not found\")\n  return response.json()\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (getWeather);\n\n\n//# sourceURL=webpack://weather/./src/modules/getWeather.js?");
 
 /***/ })
 
