@@ -13,8 +13,10 @@
   </head>
   <body>
     <header class="header">
-      <h1 class="header__title">🔅Weather</h1>
+      <icon class="header__icon bx bxs-sun"></icon>
+      <h1 class="header__title">Weatherly</h1>
     </header>
+
     <form class="weather-form">
       <input
         class="city-input"
@@ -27,5 +29,33 @@
         <i class="search-icon bx bx-search"></i>
       </button>
     </form>
+
+    <main class="weather-display">
+      <p class="country-info">Maputo, Mozambique</p>
+      <p class="weather-name">Clouds</p>
+      <p class="weather-description">few clouds</p>
+      <div class="weather-display__temperature-display">
+        <p class="temperature">25°C</p>
+        <div class="weather-image-container">
+          <img
+            class="weather-image"
+            src="http://openweathermap.org/img/wn/02n@2x.png"
+            alt="weather-details"
+          />
+        </div>
+      </div>
+      <hr class="line-break" />
+      <div class="weather-display__extra">
+        <p class="min-temperature">
+          <span class="extra-title">Min:</span> 14°C
+        </p>
+        <p class="feels-like">
+          <span class="extra-title">Feels like:</span> 23°C
+        </p>
+        <p class="max-temperature">
+          <span class="extra-title">Max:</span> 26°C
+        </p>
+      </div>
+    </main>
   </body>
 </html>
