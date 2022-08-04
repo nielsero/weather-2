@@ -16,7 +16,6 @@ function handleWeatherFormSubmit(event) {
 
   getWeather(city)
     .then((weather) => {
-      console.log(weather)
       renderWeather(weather)
     })
     .catch((error) => {

@@ -1,8 +1,13 @@
+import getCountry from "../api/getCountry"
 import getWeatherImage from "../api/getWeatherImage"
 
-function renderWeather(weatherSource) {
+async function renderWeather(weatherSource) {
   console.log("[renderWeather]")
   const weather = filterWeather(weatherSource)
+  const countrySource = await getCountry(weather.countryCode)
+  const country = filterCountry(countrySource)
+  weather.countryName = country.name
+  weather.countryFlag = country.flag
   const DOM = getDomElements()
   updateDomValues(weather, DOM)
 }
@@ -18,6 +23,13 @@ function filterWeather({ main, name, sys, weather }) {
     name: weather[0].main,
     description: weather[0].description,
     iconCode: weather[0].icon,
+  }
+}
+
+function filterCountry(country) {
+  return {
+    name: country[0].name.common,
+    flag: country[0].flag,
   }
 }
 
@@ -44,7 +56,7 @@ function getDomElements() {
 }
 
 function updateDomValues(weather, DOM) {
-  DOM.countryInfo.textContent = `${weather.city}, ${weather.countryCode}`
+  DOM.countryInfo.textContent = `${weather.city}, ${weather.countryName}`
   DOM.weatherName.textContent = weather.name
   DOM.weatherDescription.textContent = weather.description
   DOM.weatherImage.src = getWeatherImage(weather.iconCode)
