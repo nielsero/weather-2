@@ -1,3 +1,5 @@
+import getWeatherImage from "../api/getWeatherImage"
+
 function renderWeather(weatherSource) {
   console.log("[renderWeather]")
   const weather = filterWeather(weatherSource)
@@ -15,6 +17,7 @@ function filterWeather({ main, name, sys, weather }) {
     countryCode: sys.country,
     name: weather[0].main,
     description: weather[0].description,
+    iconCode: weather[0].icon,
   }
 }
 
@@ -26,6 +29,7 @@ function getDomElements() {
     countryInfo: weatherDisplay.querySelector(".country-info"),
     weatherName: weatherDisplay.querySelector(".weather-name"),
     weatherDescription: weatherDisplay.querySelector(".weather-description"),
+    weatherImage: weatherDisplay.querySelector(".weather-image"),
     temperature: weatherDisplay.querySelector(".temperature"),
     minTemperature: weatherDisplay
       .querySelector(".min-temperature")
@@ -43,6 +47,7 @@ function updateDomValues(weather, DOM) {
   DOM.countryInfo.textContent = `${weather.city}, ${weather.countryCode}`
   DOM.weatherName.textContent = weather.name
   DOM.weatherDescription.textContent = weather.description
+  DOM.weatherImage.src = getWeatherImage(weather.iconCode)
   DOM.temperature.textContent = `${weather.temperature.toFixed(1)}°C`
   DOM.minTemperature.textContent = `${weather.minTemperature.toFixed(1)}°C`
   DOM.maxTemperature.textContent = `${weather.maxTemperature.toFixed(1)}°C`
