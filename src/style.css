@@ -57,7 +57,6 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-.city-input:focus,
 .city-input:valid {
   border-bottom-color: green;
 }
@@ -166,17 +165,23 @@ body {
   }
 }
 
-/* modifiers */
-.weather-display_visible {
-  transform: translateY(0);
-  opacity: 1;
-  position: initial;
-  transition: all 750ms ease-in-out;
+.error {
+  max-width: 600px;
+  width: 100%;
+  margin-top: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding: 1em;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  position: absolute;
+  opacity: 0;
+  transform: translateY(100px);
 }
 
-.loader_visible {
-  position: initial;
-  opacity: 1;
+.error__description {
+  margin-top: 0.5rem;
 }
 
 .footer {
@@ -186,10 +191,6 @@ body {
   column-gap: 0.3rem;
   padding: 1em 0.5em;
   margin-top: auto;
-}
-
-.footer__text {
-  color: rgba(0, 0, 0, 0.7);
 }
 
 .footer__link {
@@ -203,4 +204,18 @@ body {
 
 .footer__link:hover {
   transform: rotate(360deg);
+}
+
+/* modifiers */
+.weather-display_visible,
+.error_visible {
+  transform: translateY(0);
+  opacity: 1;
+  position: initial;
+  transition: all 750ms ease-in-out;
+}
+
+.loader_visible {
+  position: initial;
+  opacity: 1;
 }

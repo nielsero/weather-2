@@ -1,4 +1,4 @@
-import { getDomElements, updateWeatherDOM } from "./dom"
+import { getDomElements, updateWeatherDOM, clearScreen } from "./dom"
 import getCountry from "../api/getCountry"
 
 async function renderWeather(weatherSource) {
@@ -10,14 +10,22 @@ async function renderWeather(weatherSource) {
   weather.countryFlag = country.flag
   const DOM = getDomElements()
   updateWeatherDOM(weather, DOM)
-  DOM.loader.classList.remove("loader_visible")
+  clearScreen()
   DOM.weatherDisplay.classList.add("weather-display_visible")
 }
 
 function renderLoader() {
+  console.log("[renderLoader]")
   const DOM = getDomElements()
-  DOM.weatherDisplay.classList.remove("weather-display_visible")
+  clearScreen()
   DOM.loader.classList.add("loader_visible")
+}
+
+function renderError() {
+  console.log("[renderError]")
+  const DOM = getDomElements()
+  clearScreen()
+  DOM.error.classList.add("error_visible")
 }
 
 function filterWeather({ main, name, sys, weather }) {
@@ -41,4 +49,4 @@ function filterCountry(country) {
   }
 }
 
-export { renderWeather, renderLoader }
+export { renderWeather, renderLoader, renderError }

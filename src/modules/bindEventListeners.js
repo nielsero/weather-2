@@ -1,5 +1,5 @@
 import getWeather from "../api/getWeather"
-import { renderWeather, renderLoader } from "./render"
+import { renderWeather, renderLoader, renderError } from "./render"
 
 function bindEventListeners() {
   console.log("[bindEventListeners]")
@@ -20,6 +20,7 @@ function handleWeatherFormSubmit(event) {
     })
     .catch((error) => {
       console.log(`[handleWeatherFormSubmit] error: ${error.message}`)
+      renderError()
     })
 }
 

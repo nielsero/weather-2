@@ -2,6 +2,7 @@ import getWeatherImage from "../api/getWeatherImage"
 import githubLogo from "../assets/github.png"
 
 function getDomElements() {
+  console.log("[getDomElements]")
   const weatherDisplay = document.querySelector(".weather-display")
 
   return {
@@ -21,11 +22,13 @@ function getDomElements() {
       .querySelector(".feels-like")
       .querySelector(".extra-weather"),
     loader: document.querySelector(".loader"),
+    error: document.querySelector(".error"),
     footer: document.querySelector(".footer"),
   }
 }
 
 function updateWeatherDOM(weather, DOM) {
+  console.log("[updateWeatherDom]")
   DOM.countryInfo.textContent = `${weather.city}, ${weather.countryName}`
   DOM.weatherName.textContent = weather.name
   DOM.weatherDescription.textContent = weather.description
@@ -37,8 +40,20 @@ function updateWeatherDOM(weather, DOM) {
 }
 
 function loadFooterImage() {
+  console.log("[loadFooterImage]")
   const footerImage = document.querySelector(".footer__image")
   footerImage.src = githubLogo
 }
 
-export { getDomElements, updateWeatherDOM, loadFooterImage }
+function clearScreen() {
+  console.log("[clearScreen]")
+  const weatherDisplay = document.querySelector(".weather-display")
+  const loader = document.querySelector(".loader")
+  const error = document.querySelector(".error")
+
+  weatherDisplay.classList.remove("weather-display_visible")
+  loader.classList.remove("loader_visible")
+  error.classList.remove("error_visible")
+}
+
+export { getDomElements, updateWeatherDOM, loadFooterImage, clearScreen }
