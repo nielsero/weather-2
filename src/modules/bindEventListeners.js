@@ -4,7 +4,6 @@ import { renderWeather, renderLoader } from "./render"
 function bindEventListeners() {
   console.log("[bindEventListeners]")
   const weatherForm = document.querySelector(".weather-form")
-
   weatherForm.addEventListener("submit", handleWeatherFormSubmit)
 }
 

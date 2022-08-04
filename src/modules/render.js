@@ -1,5 +1,5 @@
+import { getDomElements, updateWeatherDOM } from "./dom"
 import getCountry from "../api/getCountry"
-import getWeatherImage from "../api/getWeatherImage"
 
 async function renderWeather(weatherSource) {
   console.log("[renderWeather]")
@@ -9,7 +9,7 @@ async function renderWeather(weatherSource) {
   weather.countryName = country.name
   weather.countryFlag = country.flag
   const DOM = getDomElements()
-  updateDomValues(weather, DOM)
+  updateWeatherDOM(weather, DOM)
   DOM.loader.classList.remove("loader_visible")
   DOM.weatherDisplay.classList.add("weather-display_visible")
 }
@@ -39,40 +39,6 @@ function filterCountry(country) {
     name: country[0].name.common,
     flag: country[0].flag,
   }
-}
-
-function getDomElements() {
-  const weatherDisplay = document.querySelector(".weather-display")
-
-  return {
-    weatherDisplay,
-    countryInfo: weatherDisplay.querySelector(".country-info"),
-    weatherName: weatherDisplay.querySelector(".weather-name"),
-    weatherDescription: weatherDisplay.querySelector(".weather-description"),
-    weatherImage: weatherDisplay.querySelector(".weather-image"),
-    temperature: weatherDisplay.querySelector(".temperature"),
-    minTemperature: weatherDisplay
-      .querySelector(".min-temperature")
-      .querySelector(".extra-weather"),
-    maxTemperature: weatherDisplay
-      .querySelector(".max-temperature")
-      .querySelector(".extra-weather"),
-    feelsLike: weatherDisplay
-      .querySelector(".feels-like")
-      .querySelector(".extra-weather"),
-    loader: document.querySelector(".loader"),
-  }
-}
-
-function updateDomValues(weather, DOM) {
-  DOM.countryInfo.textContent = `${weather.city}, ${weather.countryName}`
-  DOM.weatherName.textContent = weather.name
-  DOM.weatherDescription.textContent = weather.description
-  DOM.weatherImage.src = getWeatherImage(weather.iconCode)
-  DOM.temperature.textContent = `${weather.temperature.toFixed(1)}°C`
-  DOM.minTemperature.textContent = `${weather.minTemperature.toFixed(1)}°C`
-  DOM.maxTemperature.textContent = `${weather.maxTemperature.toFixed(1)}°C`
-  DOM.feelsLike.textContent = `${weather.feelsLike.toFixed(1)}°C`
 }
 
 export { renderWeather, renderLoader }
