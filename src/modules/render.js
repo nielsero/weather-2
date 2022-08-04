@@ -10,6 +10,14 @@ async function renderWeather(weatherSource) {
   weather.countryFlag = country.flag
   const DOM = getDomElements()
   updateDomValues(weather, DOM)
+  DOM.loader.classList.remove("loader_visible")
+  DOM.weatherDisplay.classList.add("weather-display_visible")
+}
+
+function renderLoader() {
+  const DOM = getDomElements()
+  DOM.weatherDisplay.classList.remove("weather-display_visible")
+  DOM.loader.classList.add("loader_visible")
 }
 
 function filterWeather({ main, name, sys, weather }) {
@@ -52,6 +60,7 @@ function getDomElements() {
     feelsLike: weatherDisplay
       .querySelector(".feels-like")
       .querySelector(".extra-weather"),
+    loader: document.querySelector(".loader"),
   }
 }
 
@@ -66,4 +75,4 @@ function updateDomValues(weather, DOM) {
   DOM.feelsLike.textContent = `${weather.feelsLike.toFixed(1)}°C`
 }
 
-export default renderWeather
+export { renderWeather, renderLoader }

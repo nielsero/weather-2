@@ -1,5 +1,5 @@
 import getWeather from "../api/getWeather"
-import renderWeather from "./render"
+import { renderWeather, renderLoader } from "./render"
 
 function bindEventListeners() {
   console.log("[bindEventListeners]")
@@ -13,6 +13,7 @@ function handleWeatherFormSubmit(event) {
   event.preventDefault()
   const cityInput = event.target.querySelector(".city-input")
   const city = cityInput.value
+  renderLoader()
 
   getWeather(city)
     .then((weather) => {
